@@ -23,3 +23,20 @@ To add a `package.json` to your project, run the command `npm init`, and accept 
 `git push origin master`
 
 ----
+
+### Node HTTP Server
+
+We used the node module HTTP to build a simple web server, that we can then run and connect to using the web address: `http://localhost:3000/`.
+To run the server use the command `node index.js`
+
+```js
+var http = require('http');
+
+http.createServer(function(request, response){
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+  response.end('Hello world!');
+}).listen(3000, function(){
+  console.log('App is listening on port 3000')
+});
+
+```
