@@ -1,34 +1,25 @@
-// index.js
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
+var instagrams = [
+  { text: "Hello there", time: new Date().getTime() - 12300 },
+  { text: "Thanks, pal", time: new Date().getTime() - 1000 },
+  { text: "That's offensive", time: new Date().getTime() },
 
-// '/greeting' -> location of resource
-// req -> request
-// res -> response
-app.get('/greeting', function(req, res){
-  res.send("Woohoo you found the greeting endpoint!")
-});
+]
 
-// :name -> means it is a req parameter
-app.get('/greeting/:name', function(req, res){
-  var yourName = req.params.name;
-  res.send("nice to meet you " + yourName);
-});
+app.use(express.static(__dirname + '/public'));
 
-//Challenge: define a reponse that can send back your favorite color
-app.get('/color/:color', function(req, res){
-  var yourColor = req.params.color;
-  res.send("Your color is:  " + yourName);
-});
+app.get('/instagrams', function(req, res) {
+  res.json({ message: "Found Data", data: instagrams })
+})
 
+app.post('/instagrams', function(req, res) {
+  var newGram = { text: req.body.post, time: new Date().getTime() };
+  instagrams.push(newGram);
+  res.json({message: "Post Success", data: instagrams});
+})
 
-
-// Challenge: Define a salutations endpoint
-app.get('/salutations', function(req, res){
-  res.send("Thank you Mr. Node 🤓")
-});
-
-app.listen(3000, function(){
-  console.log('Listening on port 3000');
-});
+var server = app.listen(3000);
