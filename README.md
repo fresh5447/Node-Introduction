@@ -86,3 +86,14 @@ app.listen(3000, function(){
   console.log('Listening on port 3000');
 });
 ```
+
+### Passing params
+TODO: Notes About params
+
+----
+
+#### Nodemon
+
+nodemon will watch our files automatically and restart our server so we don't have to do it manually.
+`nodemon index.js` -> to start server
+how to install: `sudo npm install -g nodemon`
