@@ -19,7 +19,7 @@ app.get('/greeting/:name', function(req, res){
 //Challenge: define a reponse that can send back your favorite color
 app.get('/color/:color', function(req, res){
   var yourColor = req.params.color;
-  res.send("nice to meet you " + yourName);
+  res.send("Your color is:  " + yourName);
 });
 
 
