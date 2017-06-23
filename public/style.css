@@ -1,0 +1,14 @@
+.dog-img {
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dog-panel {
+  text-align: center;
+  width: 66.66%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

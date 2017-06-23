@@ -6,7 +6,9 @@ var component = new Vue({
 
   data: {
     instagrams: null,
-    otherStuff: ['hi one', 'hi two', 'hi three']
+    otherStuff: ['hi one', 'hi two', 'hi three'],
+    newTitle: null,
+    newImg: null
   },
 
   created: function () {
@@ -22,6 +24,20 @@ var component = new Vue({
       }).done(function(response){
         self.instagrams = response.data
         console.log(self.instagrams)
+      })
+    },
+    submitInstagram: function(){
+      var self = this;
+      console.log(this.newTitle)
+      console.log(this.newImg)
+      var item = { title: this.newTitle, img: this.newImg }
+      $.ajax({
+        url: apiURL,
+        method: 'POST',
+        data: item
+      }).done(function(response){
+        self.fetchData()
+        console.log(response)
       })
     }
   }
