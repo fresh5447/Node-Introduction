@@ -58,6 +58,36 @@ app.get('/salutations', (req, res) => {
 });
 
 
+// *** 11/29 CHALLENGES ***
+
+// Create a GET endpoing that takes a word as a parameter..
+// and returns true or false if that word is a palindrom
+app.get('/isPalindrome/:word', (req, res) => {
+  const word = req.params.word
+  const isPalindrome = 
+  word.toLowerCase().split(' ').reverse.join() === word.toLowerCase()
+  ? `${word} is a Palindrome`
+  :`${word} is not a Palindrome`
+})
+
+// Add Customer to list only if they are not already on the list.
+// Either Return a 'customer added response'
+// Or a 'Customer not added response'
+app.post('/customers', (req, res) => {
+  const name = req.body.name
+  const id = req.body.id
+  const customer = {name, id}
+  const doesCustoemrExist = customers.find((customer) => customer.id === id)
+
+  if(doesCustoemrExist) {
+    res.json({ msg: 'customer not added', customer: customer })
+  } else {
+    res.json({ msg: 'customer added', customer: customer })
+  }
+
+})
+
+
 const server = app.listen(4000,() => {
   console.log('Listening on port 4000')
 })
